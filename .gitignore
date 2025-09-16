@@ -1,0 +1,62 @@
+# --- OS / Misc ---
+.DS_Store
+Thumbs.db
+
+# --- Node / Package managers ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+# (Lock: package-lock.json / yarn.lock / pnpm-lock.yaml)
+
+# --- Vite / Build output ---
+dist/
+.vite/
+node_modules/.vite/
+
+# --- TypeScript ---
+*.tsbuildinfo
+
+# --- Env  ---
+.env
+.env.local
+.env.*.local
+.env.development.local
+.env.production.local
+.env.test.local
+!.env.example
+
+# --- Editors / IDE ---
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# --- Lint / Format / Tools caches ---
+.eslintcache
+.stylelintcache
+
+# --- Tests / Coverage ---
+coverage/
+.vitest/
+.nyc_output/
+
+# --- Logs / PIDs ---
+logs/
+*.log
+*.pid
+*.pid.lock
+
+# --- Vite/Rollup plugins (з твого списку) ---
+# vite-plugin-inspect can create a local dump
+.vite-inspect/
+# rollup-plugin-visualizer puts the report in the root
+stats.html
+stats-*.html
+stats.json
+
+# If suddenly compressed artifacts appear not only in dist (rarely)
+*.br
+*.gz
+

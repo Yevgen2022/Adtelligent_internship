@@ -1,20 +1,20 @@
 [
   {
     "id": 1,
-    "title": "React 19: що нового",
-    "description": "Огляд ключових фіч і змін у React 19, вплив на DX та продуктивність.",
+    "title": "React 19: What's New",
+    "description": "Overview of key features and changes in React 19, impact on DX and performance.",
     "author": "Team Frontend"
   },
   {
     "id": 2,
-    "title": "TypeScript 5.x у продакшені",
-    "description": "Практичні кейси міграції, поради з конфігурації, підводні камені.",
+    "title": "TypeScript 5.x in Production",
+    "description": "Practical migration cases, configuration tips, and common pitfalls.",
     "author": "Dev Experience"
   },
   {
     "id": 3,
-    "title": "Tailwind: продуктивні патерни",
-    "description": "Як організовувати класні стилі, щоб не перетворюватися на 'utility soup'.",
+    "title": "Tailwind: Productive Patterns",
+    "description": "How to organize utility classes without turning into 'utility soup'.",
     "author": "UI Guild"
   }
 ]

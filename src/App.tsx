@@ -1,15 +1,6 @@
-import './App.css'
+import { useRoutes } from "react-router-dom";
+import routes from "./routes/routes";
 
-function App() {
-
-
-  return (
-    <>
-        <div className="bg-blue-500 text-white p-4 rounded">
-            Tailwind працює!
-        </div>
-    </>
-  )
+export default function App() {
+  return useRoutes(routes);
 }
-
-export default App

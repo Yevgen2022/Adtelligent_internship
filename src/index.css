@@ -1,4 +1,3 @@
-
 /* Tailwind CSS */
 @import "tailwindcss";
 
@@ -17,7 +16,9 @@
 /* Basic styles for body */
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family:
+    system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
   line-height: 1.5;
   font-weight: 400;
   min-height: 100vh;

@@ -1,11 +1,19 @@
+import { lazy } from "react";
 import type { RouteObject } from "react-router-dom";
 import { Navigate } from "react-router-dom";
-import Layout from "../components/Layout";
-import About from "../pages/About";
-import Articles from "../pages/Articles";
-import Home from "../pages/Home";
-import NewsDetails from "../pages/NewsDetails";
-import Sport from "../pages/Sport";
+// import ProtectedRoute from "./ProtectedRoute";
+import PublicOnlyRoute from "./PublicOnlyRoute";
+
+// import Bookmarks from "../pages/Bookmarks";
+
+const Layout = lazy(() => import("../components/Layout"));
+const About = lazy(() => import("../pages/About"));
+const Articles = lazy(() => import("../pages/Articles"));
+const Home = lazy(() => import("../pages/Home"));
+const Login = lazy(() => import("../pages/Login"));
+const NewsDetails = lazy(() => import("../pages/NewsDetails"));
+const SignUp = lazy(() => import("../pages/SignUp"));
+const Sport = lazy(() => import("../pages/Sport"));
 
 const routes: RouteObject[] = [
   {
@@ -17,6 +25,23 @@ const routes: RouteObject[] = [
       { path: "sport", element: <Sport /> },
       { path: "about", element: <About /> },
       { path: "news/:id", element: <NewsDetails /> },
+      { path: "login", element: <Login /> },
+      { path: "signup", element: <SignUp /> },
+
+      //middlware
+      // {
+      //   element: <ProtectedRoute />,
+      //   children: [{ path: "bookmarks", element: <Bookmarks /> }],
+      // },
+
+      {
+        element: <PublicOnlyRoute />,
+        children: [
+          { path: "login", element: <Login /> },
+          { path: "signup", element: <SignUp /> },
+        ],
+      },
+
       { path: "*", element: <Navigate to="/" replace /> },
     ],
   },

@@ -48,7 +48,7 @@ export default function Header() {
               title="Only registered user"
               className="inline-flex items-center rounded-xl px-3 py-2 text-sm font-medium text-slate-400 opacity-60 cursor-not-allowed"
             >
-              🔒 About
+              About
             </span>
           )}
 

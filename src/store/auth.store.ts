@@ -1,5 +1,3 @@
-// store/auth.schema.ts
-
 import { nanoid } from "nanoid";
 import { create } from "zustand";
 import type { Credentials, User } from "../types/auth.type";

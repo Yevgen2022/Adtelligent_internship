@@ -1,4 +1,3 @@
-// types/auth.schema.ts
 export type User = {
   id: string;
   name: string;

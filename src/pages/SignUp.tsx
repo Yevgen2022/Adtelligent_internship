@@ -19,7 +19,7 @@ export default function SignUp() {
 
   const onSubmit = async (data: RegisterValues) => {
     try {
-      // формуємо payload явно → без «невикористаного» confirmPassword
+      // we form the payload explicitly → without the "unused" confirmPassword
       const payload = {
         name: data.name,
         email: data.email,

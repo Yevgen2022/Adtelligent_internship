@@ -1,220 +1,89 @@
-/*!* Tailwind CSS *!*/
-/*@import "tailwindcss";*/
-
-/*!* Basic global styles *!*/
-/*:root {*/
-/*    !* We save important system settings *!*/
-/*    font-synthesis: none;*/
-/*    text-rendering: optimizeLegibility;*/
-/*    -webkit-font-smoothing: antialiased;*/
-/*    -moz-osx-font-smoothing: grayscale;*/
-
-/*    !* Color scheme for the system theme *!*/
-/*    color-scheme: light dark;*/
-/*}*/
-
-/*!* Basic styles for body *!*/
-/*body {*/
-/*    margin: 0;*/
-/*    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,*/
-/*    sans-serif;*/
-/*    line-height: 1.5;*/
-/*    font-weight: 400;*/
-/*    min-height: 100vh;*/
-
-/*    !* Default dark theme *!*/
-/*    @apply bg-gray-900 text-gray-100;*/
-/*}*/
-
-/*!* Styles for links *!*/
-/*a {*/
-/*    font-weight: 500;*/
-/*    @apply text-blue-400 hover:text-blue-300 transition-colors duration-200;*/
-/*    text-decoration: inherit;*/
-/*}*/
-
-/*!* Basic styles for headings *!*/
-/*h1 {*/
-/*    font-size: 3.2em;*/
-/*    line-height: 1.1;*/
-/*    @apply font-bold;*/
-/*}*/
-
-/*h2 {*/
-/*    @apply text-2xl font-semibold mb-4;*/
-/*}*/
-
-/*h3 {*/
-/*    @apply text-xl font-medium mb-3;*/
-/*}*/
-
-/*@layer base {*/
-/*    button {*/
-/*        @apply inline-flex items-center justify-center*/
-/*        rounded-lg border border-transparent*/
-/*        px-4 py-2 text-sm font-medium*/
-/*        transition-colors duration-200*/
-/*        bg-gray-800 text-black*/
-/*        hover:bg-gray-700*/
-/*        focus:outline-none focus:ring-4 focus:ring-blue-500/50;*/
-/*    }*/
-
-/*    button:disabled {*/
-/*        @apply opacity-50 cursor-not-allowed;*/
-/*    }*/
-/*}*/
-
-/*!* Basic styles for buttons (can be overridden via Tailwind classes) *!*/
-/*!*button {*!*/
-/*!*    border-radius: 8px;*!*/
-/*!*    border: 1px solid transparent;*!*/
-/*!*    padding: 0.6em 1.2em;*!*/
-/*!*    font-size: 1em;*!*/
-/*!*    font-weight: 500;*!*/
-/*!*    font-family: inherit;*!*/
-/*!*    cursor: pointer;*!*/
-/*!*    transition: all 0.25s ease;*!*/
-
-/*!*    !* ТDark theme for buttons *!*!*/
-/*!*    @apply bg-gray-800 hover:border-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-500/50;*!*/
-/*!*}*!*/
-
-
-
-
-/*!* Adaptive styles for light theme*!*/
-/*@media (prefers-color-scheme: light) {*/
-/*    body {*/
-/*        @apply bg-white text-gray-900;*/
-/*    }*/
-
-/*    a {*/
-/*        @apply text-blue-600 hover:text-blue-700;*/
-/*    }*/
-
-/*    button {*/
-/*        @apply bg-gray-100 hover:bg-gray-200;*/
-/*    }*/
-/*}*/
-
-/*!* Utility classes for containers *!*/
-/*.container-app {*/
-/*    max-width: 1280px;*/
-/*    margin: 0 auto;*/
-/*    padding: 2rem;*/
-/*}*/
-
-/*.container-centered {*/
-/*    @apply flex items-center justify-center min-h-screen;*/
-/*}*/
-
-/*!* Scroll styles (optional) *!*/
-/*::-webkit-scrollbar {*/
-/*    width: 8px;*/
-/*}*/
-
-/*::-webkit-scrollbar-track {*/
-/*    @apply bg-gray-100 dark:bg-gray-900;*/
-/*}*/
-
-/*::-webkit-scrollbar-thumb {*/
-/*    @apply bg-gray-400 dark:bg-gray-600 rounded;*/
-/*}*/
-
-/*::-webkit-scrollbar-thumb:hover {*/
-/*    @apply bg-gray-500 dark:bg-gray-500;*/
-/*}*/
 /* Tailwind CSS */
 @import "tailwindcss";
-@tailwind base;
 
 /* Basic global styles */
 :root {
-    /* We save important system settings */
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  /* We save important system settings */
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
-    /* Fixed light color scheme */
-    color-scheme: light;
+  /* Fixed light color scheme */
+  color-scheme: light;
 }
 
 /* Basic styles for body */
 body {
-    margin: 0;
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+  margin: 0;
+  font-family:
+    system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
     sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
-    min-height: 100vh;
+  line-height: 1.5;
+  font-weight: 400;
+  min-height: 100vh;
 
-    /* Light theme styles */
-    @apply bg-white text-gray-900;
-}
-
-/* Styles for links */
-a {
-    font-weight: 500;
-    @apply text-blue-500 hover:text-blue-700 transition-colors duration-200;
-    text-decoration: inherit;
+  /* Light theme styles */
+  @apply bg-white text-gray-900;
 }
 
 /* Basic styles for headings */
 h1 {
-    font-size: 3.2em;
-    line-height: 1.1;
-    @apply font-bold;
+  font-size: 3.2em;
+  line-height: 1.1;
+  @apply font-bold;
 }
 
 h2 {
-    @apply text-2xl font-semibold mb-4;
+  @apply text-2xl font-semibold mb-4;
 }
 
 h3 {
-    @apply text-xl font-medium mb-3;
+  @apply text-xl font-medium mb-3;
 }
 
 @layer base {
-    button {
-        @apply inline-flex items-center justify-center
+  button {
+    @apply inline-flex items-center justify-center
         rounded-lg border border-transparent
         px-4 py-2 text-sm font-medium
         transition-colors duration-200
         bg-gray-200 text-gray-900
         hover:bg-gray-300 hover:border-blue-400
-        focus:outline-none focus:ring-4 focus:ring-blue-400
-    }
+        focus:outline-none focus:ring-4 focus:ring-blue-400;
+  }
 
-    button:disabled {
-        @apply opacity-50 cursor-not-allowed;
-    }
+  a {
+    @apply font-medium no-underline
+        text-blue-500
+        transition-colors duration-200;
+  }
 }
 
 /* Utility classes for containers */
 .container-app {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
 .container-centered {
-    @apply flex items-center justify-center min-h-screen;
+  @apply flex items-center justify-center min-h-screen;
 }
 
 /* Scroll styles */
 ::-webkit-scrollbar {
-    width: 8px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    @apply bg-gray-100;
+  @apply bg-gray-100;
 }
 
 ::-webkit-scrollbar-thumb {
-    @apply bg-gray-400 rounded;
+  @apply bg-gray-400 rounded;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    @apply bg-gray-500;
+  @apply bg-gray-500;
 }

@@ -1,19 +1,24 @@
 import type { AdsClient, RenderBannerInput } from "./ads.types";
 
 let prebidLoaded = false;
-const addedUnits = new Set<string>();
 
-function loadPrebidOnce(src = "/prebid10.10.0.js"): Promise<void> {
+const PREBID_SRC =
+  (import.meta.env.VITE_PREBID_SRC as string | undefined) ??
+  "/prebid10.10.0.js";
+
+function loadPrebidOnce(src = PREBID_SRC): Promise<void> {
   if (prebidLoaded) return Promise.resolve();
   return new Promise<void>((resolve, reject) => {
     const s = document.createElement("script");
+    s.type = "text/javascript"; // classic
     s.src = src;
     s.async = true;
     s.onload = () => {
       prebidLoaded = true;
+      if (import.meta.env.DEV) console.log("[ads] Prebid loaded:", src);
       resolve();
     };
-    s.onerror = () => reject(new Error("Failed to load Prebid"));
+    s.onerror = () => reject(new Error(`Failed to load Prebid: ${src}`));
     document.head.appendChild(s);
   });
 }
@@ -37,11 +42,10 @@ function waitForPbjs(max = 5000): Promise<void> {
   });
 }
 
-/** Extend the minimal pbjs types locally for the APIs used */
-type PbjsBidsApi = NonNullable<typeof window.pbjs> & {
-  addAdUnits: (units: unknown[]) => void;
+type PbjsApi = NonNullable<typeof window.pbjs> & {
   requestBids: (opts: {
-    adUnitCodes: string[];
+    adUnits?: unknown[];
+    adUnitCodes?: string[];
     bidsBackHandler: () => void;
     timeout: number;
   }) => void;
@@ -49,16 +53,19 @@ type PbjsBidsApi = NonNullable<typeof window.pbjs> & {
     code: string,
   ) => Array<{ adId: string; width?: number; height?: number }>;
   renderAd: (doc: Document | undefined, adId: string) => void;
+  setConfig?: (cfg: unknown) => void;
 };
 
 const client: AdsClient = {
   async init() {
     await loadPrebidOnce();
     await waitForPbjs();
-    const pbjs = window.pbjs as NonNullable<typeof window.pbjs>;
+    const pbjs = window.pbjs as PbjsApi;
     pbjs.que = pbjs.que || [];
     pbjs.que.push(() => {
-      if (import.meta.env.DEV) console.log("[ads] prebid ready");
+      if (import.meta.env.DEV) console.log("[ads] pbjs ready");
+
+      // pbjs.setConfig?.({ bidderTimeout: 1200 });
     });
   },
 
@@ -70,20 +77,19 @@ const client: AdsClient = {
     iframe,
   }: RenderBannerInput) {
     await this.init();
-    const pbjs = window.pbjs as PbjsBidsApi;
+    const pbjs = window.pbjs as PbjsApi;
     pbjs.que = pbjs.que || [];
 
     return new Promise<void>((resolve) => {
       pbjs.que.push(() => {
         const adUnit = { code, mediaTypes: { banner: { sizes } }, bids };
 
-        if (!addedUnits.has(code)) {
-          pbjs.addAdUnits([adUnit]);
-          addedUnits.add(code);
-        }
-
         const render = () => {
           const winners = pbjs.getHighestCpmBids(code) || [];
+          if (import.meta.env.DEV) {
+              // useful log for debugging
+            console.log("[ads] winners:", winners);
+          }
           if (winners.length > 0 && iframe) {
             const { adId, width, height } = winners[0];
             const [w, h] =
@@ -95,6 +101,9 @@ const client: AdsClient = {
             try {
               const doc = iframe.contentWindow?.document;
               pbjs.renderAd(doc, adId);
+              if (import.meta.env.DEV) {
+                console.log("[ads] rendered ad:", { code, adId, w, h });
+              }
             } catch (e) {
               // eslint-disable-next-line no-console
               console.error("[ads] render error:", e);
@@ -107,7 +116,7 @@ const client: AdsClient = {
         };
 
         pbjs.requestBids({
-          adUnitCodes: [code],
+          adUnits: [adUnit],
           bidsBackHandler: render,
           timeout,
         });

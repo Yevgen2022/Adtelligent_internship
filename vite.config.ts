@@ -24,7 +24,7 @@ export default defineConfig(({ mode }) => {
       svgr(),
       checker({ typescript: true }),
       Inspect(),
-      virtual({ "virtual:build-info": buildInfoCode }), //віртуальний модуль build-info
+      virtual({ "virtual:build-info": buildInfoCode }), //virtual module build-info
       { ...compression({ algorithm: "brotliCompress" }), apply: "build" },
     ],
     resolve: {

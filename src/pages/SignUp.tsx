@@ -47,7 +47,7 @@ export default function SignUp() {
                     />
                 </aside>
 
-                {/*centerr*/}///////////////////////////////////////////////////////////
+                {/*centerr/////////////////////////////////////////////////////////// */}
                 <section className="mx-auto w-full max-w-md">
                     <h1 className="text-2xl font-semibold">Sign Up</h1>
                     <form onSubmit={handleSubmit(onSubmit)} className="mt-4 space-y-4" noValidate>

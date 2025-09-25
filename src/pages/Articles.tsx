@@ -26,7 +26,7 @@ export default function Article() {
                 </aside>
 
 
-                {/* Center */}//////////////////////////////////////////
+                 {/*center/////////////////////////////////////////////////////////// */}
                 <section>
                     <article className="rounded-xl border p-6 space-y-3">
                         <h2 className="text-xl font-medium">Article Title</h2>

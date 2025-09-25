@@ -1,14 +1,13 @@
 import { createRoot } from "react-dom/client";
 import "./index.css";
+
+import ads from "virtual:ads";
 import { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import { seedUsersOnce } from "./lib/seed";
 import { useAuth } from "./store/auth.store";
 
-
-
-import ads from "virtual:ads";
 void ads.init();
 
 function Bootstrap() {

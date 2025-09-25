@@ -1,55 +1,59 @@
-import { useEffect, useRef } from "react";
 import ads from "virtual:ads";
-
-type Size = [number, number];
-type Bid = { bidder: string; params: Record<string, any> };
+import { useEffect, useMemo, useRef } from "react";
+import type { AdsClient, Bid, Size } from "../ads/ads.types";
 
 export type AdvertisementProps = {
-    code: string;
-    sizes: Size[] | Size[][];
-    bids: Bid[];
-    timeout?: number;
-    className?: string;
-    debug?: boolean;
+  code: string;
+  sizes: Size[] | Size[][];
+  bids: Bid[];
+  timeout?: number;
+  className?: string;
+  debug?: boolean;
 };
 
+function isMatrix(s: Size[] | Size[][]): s is Size[][] {
+  const first = (s as Size[] | Size[][])[0];
+  return Array.isArray(first) && Array.isArray((first as unknown[])[0]);
+}
+
 export default function Advertisement({
-                                          code,
-                                          sizes,
-                                          bids,
-                                          timeout = 1000,
-                                          className,
-                                      }: AdvertisementProps) {
-    const iframeRef = useRef<HTMLIFrameElement | null>(null);
+  code,
+  sizes,
+  bids,
+  timeout = 1000,
+  className,
+}: AdvertisementProps) {
+  const iframeRef = useRef<HTMLIFrameElement | null>(null);
+  const client = ads as AdsClient;
 
-    // Нормалізація розмірів у плоский масив
-    const flatSizes: Size[] = Array.isArray((sizes as any)?.[0]?.[0])
-        ? (sizes as Size[][]).flat()
-        : (sizes as Size[]);
+  const flatSizes = useMemo<Size[]>(() => {
+    return isMatrix(sizes) ? sizes.flat() : sizes;
+  }, [sizes]);
 
-    const firstSize: Size = flatSizes[0] || [300, 250];
-    const [initialW, initialH] = firstSize;
+  const [initialW, initialH] = useMemo<Size>(() => {
+    return flatSizes[0] ?? [300, 250];
+  }, [flatSizes]);
 
-    useEffect(() => {
-        if (!iframeRef.current) return;
-        ads.renderBanner({
-            code,
-            sizes: flatSizes,
-            bids,
-            timeout,
-            iframe: iframeRef.current,
-        });
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [code, JSON.stringify(flatSizes), JSON.stringify(bids), timeout]);
+  useEffect(() => {
+    if (!iframeRef.current) return;
+    void client.renderBanner({
+      code,
+      sizes: flatSizes,
+      bids,
+      timeout,
+      iframe: iframeRef.current,
+    });
+  }, [client, code, flatSizes, bids, timeout]);
 
-    return (
-        <iframe
-            id={code}
-            ref={iframeRef}
-            title={`ad-${code}`}
-            className={className}
-            width={initialW}
-            height={initialH}
-        />
-    );
+  return (
+    <iframe
+      id={code}
+      ref={iframeRef}
+      title={`ad-${code}`}
+      className={className}
+      width={initialW}
+      height={initialH}
+      style={{ border: 0, display: "block" }}
+    />
+  );
 }

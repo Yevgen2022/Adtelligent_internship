@@ -1,4 +1,3 @@
-
 // <reference types="node" />
 import virtual from "@rollup/plugin-virtual";
 import tailwindcss from "@tailwindcss/vite";
@@ -25,12 +24,12 @@ export default defineConfig(({ mode }) => {
       svgr(),
       checker({ typescript: true }),
       Inspect(),
-      virtual({ "virtual:build-info": buildInfoCode }), //віртуальний модуль build-info
+      virtual({ "virtual:build-info": buildInfoCode }), //virtual module build-info
       { ...compression({ algorithm: "brotliCompress" }), apply: "build" },
     ],
     resolve: {
       alias: {
-        // перемикач реклами через env
+        // advertising switch via env
         "virtual:ads": adsOn ? "/src/ads/real.ts" : "/src/ads/stub.ts",
       },
     },

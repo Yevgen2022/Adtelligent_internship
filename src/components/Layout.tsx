@@ -1,6 +1,6 @@
-// import Footer from './Footer';
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
+import Footer from "./Footer";
 // import ScrollToTop from "./ScrollToTop";
 
 export default function Layout() {
@@ -11,7 +11,7 @@ export default function Layout() {
       <main className="flex-grow max-w-6xl mx-auto px-6 pt-56 md:pt-24">
         <Outlet />
       </main>
-      {/*<Footer />*/}
+      <Footer />
     </>
   );
 }

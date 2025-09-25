@@ -72,3 +72,6 @@ stats.json
 # --- Compressed Files ---
 *.br
 *.gz
+
+# --- Texts Files ---
+*.txt

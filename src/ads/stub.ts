@@ -2,9 +2,11 @@ import type { AdsClient, RenderBannerInput } from "./ads.types";
 
 const client: AdsClient = {
     async init() {
-        // no-op
+        if (import.meta.env.DEV) console.log("[ads] init stub (disabled)");
     },
     async renderBanner(_input: RenderBannerInput) {
-        // no-op (нічого не рендеримо)
+        if (import.meta.env.DEV) console.log("[ads] renderBanner stub (disabled)");
     },
 };
+
+export default client;

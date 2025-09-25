@@ -22,6 +22,8 @@
 // );
 
 // main.tsx
+
+
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import { useEffect, useState } from "react";
@@ -30,20 +32,25 @@ import App from "./App";
 import { seedUsersOnce } from "./lib/seed";
 import { useAuth } from "./store/auth.store";
 
+
+
+import ads from "virtual:ads";
+void ads.init();
+
 function Bootstrap() {
   const hydrate = useAuth((s) => s.hydrateFromStorage);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
     (async () => {
-      await seedUsersOnce(); // 1) чекаємо сид
-      hydrate(); // 2) тоді гідратація Zustand
-      setReady(true); // 3) показуємо роутер
+      await seedUsersOnce();
+      hydrate();
+      setReady(true);
     })();
   }, [hydrate]);
 
-  if (!ready) return null; // або ваш лоадер
-  return <App />; // ваш useRoutes(routes)
+  if (!ready) return null;
+  return <App />;
 }
 
 const rootEl = document.getElementById("root");

@@ -1,29 +1,3 @@
-// // import { StrictMode } from 'react'
-// import { createRoot } from "react-dom/client";
-// import "./index.css";
-// import { BrowserRouter } from "react-router-dom";
-// import App from "./App.tsx";
-//
-//
-// import { seedUsersOnce } from "./lib/seed";
-// import { useAuth } from "./store/auth.store";
-//
-// seedUsersOnce();
-// useAuth.getState().hydrateFromStorage();
-//
-//
-// const rootEl = document.getElementById("root");
-// if (!rootEl) throw new Error('Root element "#root" not found');
-//
-// createRoot(rootEl).render(
-//   <BrowserRouter basename={import.meta.env.BASE_URL}>
-//     <App />
-//   </BrowserRouter>,
-// );
-
-// main.tsx
-
-
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import { useEffect, useState } from "react";

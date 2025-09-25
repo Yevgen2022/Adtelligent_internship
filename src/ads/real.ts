@@ -27,12 +27,14 @@ function waitForPbjs(max = 5000) {
 
 const client: AdsClient = {
     async init() {
-        await loadPrebidOnce();         // підключили скрипт
-        await waitForPbjs();            // переконались, що window.pbjs готовий
+        await loadPrebidOnce();
+        await waitForPbjs();
         const pbjs = (window as any).pbjs;
         pbjs.que = pbjs.que || [];
         pbjs.que.push(() => {
-            // базові налаштування за потреби
+
+
+
             // pbjs.setConfig({ bidderTimeout: 2000 });
             if (import.meta.env.DEV) console.log("[ads] prebid ready");
         });

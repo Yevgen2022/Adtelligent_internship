@@ -1,4 +1,3 @@
-
 // <reference types="node" />
 import virtual from "@rollup/plugin-virtual";
 import tailwindcss from "@tailwindcss/vite";

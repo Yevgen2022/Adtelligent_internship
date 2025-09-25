@@ -4,7 +4,7 @@ let prebidLoaded = false;
 
 const PREBID_SRC =
   (import.meta.env.VITE_PREBID_SRC as string | undefined) ??
-  "/prebid10.10.0.js";
+  "/vendor/prebid/10.10.0/prebid.js";
 
 function loadPrebidOnce(src = PREBID_SRC): Promise<void> {
   if (prebidLoaded) return Promise.resolve();

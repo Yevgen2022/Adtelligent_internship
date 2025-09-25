@@ -87,7 +87,7 @@ const client: AdsClient = {
         const render = () => {
           const winners = pbjs.getHighestCpmBids(code) || [];
           if (import.meta.env.DEV) {
-              // useful log for debugging
+            // useful log for debugging
             console.log("[ads] winners:", winners);
           }
           if (winners.length > 0 && iframe) {

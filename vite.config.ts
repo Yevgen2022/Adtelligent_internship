@@ -29,7 +29,7 @@ export default defineConfig(({ mode }) => {
     ],
     resolve: {
       alias: {
-        // перемикач реклами через env
+        // advertising switch via env
         "virtual:ads": adsOn ? "/src/ads/real.ts" : "/src/ads/stub.ts",
       },
     },

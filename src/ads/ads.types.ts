@@ -1,5 +1,8 @@
 export type Size = [number, number];
-export type Bid = { bidder: string; params: Record<string, any> };
+
+export type BidParams = Record<string, unknown>;
+
+export type Bid = { bidder: string; params: BidParams };
 
 export type RenderBannerInput = {
   code: string;

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Footer() {
   return (
     <footer className="border-t border-slate-800 bg-slate-900/80 backdrop-blur mt-auto">
@@ -12,43 +14,52 @@ export default function Footer() {
               A brief description of your company or project. Share your values
               and mission with the world.
             </p>
+
+            {/* Social media */}
             <div className="flex space-x-4">
-              {/* Social media */}
               <a
-                href="#"
+                href="https://github.com/your-org"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-slate-400 hover:text-slate-100 transition-colors"
               >
+                <span className="sr-only">GitHub</span>
                 <svg
                   className="w-5 h-5"
-                  fill="currentColor"
                   viewBox="0 0 24 24"
-                >
-                  <path d="" />
-                </svg>
+                  aria-hidden="true"
+                  focusable="false"
+                />
               </a>
+
               <a
-                href="#"
+                href="https://twitter.com/your-org"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-slate-400 hover:text-slate-100 transition-colors"
               >
+                <span className="sr-only">Twitter/X</span>
                 <svg
                   className="w-5 h-5"
-                  fill="currentColor"
                   viewBox="0 0 24 24"
-                >
-                  <path d="" />
-                </svg>
+                  aria-hidden="true"
+                  focusable="false"
+                />
               </a>
+
               <a
-                href="#"
+                href="https://www.linkedin.com/company/your-org"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-slate-400 hover:text-slate-100 transition-colors"
               >
+                <span className="sr-only">LinkedIn</span>
                 <svg
                   className="w-5 h-5"
-                  fill="currentColor"
                   viewBox="0 0 24 24"
-                >
-                  <path d="" />
-                </svg>
+                  aria-hidden="true"
+                  focusable="false"
+                />
               </a>
             </div>
           </div>
@@ -60,36 +71,36 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2">
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/"
                   className="text-slate-400 hover:text-slate-100 text-sm transition-colors"
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/about"
                   className="text-slate-400 hover:text-slate-100 text-sm transition-colors"
                 >
                   About
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/services"
                   className="text-slate-400 hover:text-slate-100 text-sm transition-colors"
                 >
                   Services
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/contact"
                   className="text-slate-400 hover:text-slate-100 text-sm transition-colors"
                 >
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -126,18 +137,18 @@ export default function Footer() {
               © 2024 Your Company. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <a
-                href="#"
+              <Link
+                to="/privacy"
                 className="text-slate-400 hover:text-slate-100 text-sm transition-colors"
               >
                 Privacy Policy
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/terms"
                 className="text-slate-400 hover:text-slate-100 text-sm transition-colors"
               >
                 Terms of Service
-              </a>
+              </Link>
             </div>
           </div>
         </div>

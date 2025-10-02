@@ -3,8 +3,13 @@ import "./index.css";
 import ads from "virtual:ads";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
+import { initPrebidTracker } from "./modules/prebid-tracker/init";
+
+
 
 void ads.init();
+void initPrebidTracker();
+
 
 const rootEl = document.getElementById("root");
 if (!rootEl) throw new Error('Root element "#root" not found');

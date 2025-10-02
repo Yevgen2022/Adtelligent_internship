@@ -33,6 +33,16 @@ export default defineConfig(({ mode }) => {
         "virtual:ads": adsOn ? "/src/ads/real.ts" : "/src/ads/stub.ts",
       },
     },
+      server: {
+          proxy: {
+              "/api": {
+                  target: "http://localhost:3500",
+                  changeOrigin: true,
+                  secure: false,
+                  cookieDomainRewrite: "localhost",
+              },
+          },
+      },
     build: {
       minify: "terser",
       terserOptions: { compress: { drop_console: mode === "production" } },

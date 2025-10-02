@@ -1,5 +1,5 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { useAuth } from "../store/auth.store";
+import { useAuth } from "../store/auth.store.ts";
 
 function linkClasses({ isActive }: { isActive: boolean }) {
   return [

@@ -23,7 +23,7 @@ export default function Article() {
         </aside>
 
         {/*center/////////////////////////////////////////////////////////// */}
-        <section>
+        <section className="mx-auto px-4 py-8 border">
           <article className="rounded-xl border p-6 space-y-3">
             <h2 className="text-xl font-medium">Article Title</h2>
             <p className="leading-relaxed">

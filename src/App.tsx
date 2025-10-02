@@ -2,10 +2,10 @@ import { Suspense, useEffect, useState } from "react";
 import { useRoutes } from "react-router-dom";
 import { seedUsersOnce } from "./lib/seed";
 import routes from "./routes/routes";
-import { useAuth } from "./store/auth.store";
+import { useAuth } from "./store/auth.store.ts";
 
 export default function App() {
-  const hydrate = useAuth((s) => s.hydrateFromStorage);
+  const hydrate = useAuth((s) => s.hydrate);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {

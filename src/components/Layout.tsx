@@ -8,7 +8,7 @@ export default function Layout() {
     <>
       {/*<ScrollToTop />*/}
       <Header />
-      <main className="flex-grow max-w-6xl mx-auto px-6 pt-56 md:pt-24">
+      <main className="flex-grow mx-auto px-6 pt-56 border">
         <Outlet />
       </main>
       <Footer />

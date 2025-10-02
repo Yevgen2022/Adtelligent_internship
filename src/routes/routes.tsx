@@ -9,9 +9,9 @@ import PublicOnlyRoute from "./PublicOnlyRoute";
 const Layout = lazy(() => import("../components/Layout"));
 const About = lazy(() => import("../pages/About"));
 const Articles = lazy(() => import("../pages/Articles"));
-const Home = lazy(() => import("../pages/Home"));
-const Login = lazy(() => import("../pages/Login"));
-const NewsDetails = lazy(() => import("../pages/NewsDetails"));
+const Home = lazy(() => import("../pages/Home.tsx"));
+const Login = lazy(() => import("../pages/Login.tsx"));
+const NewsDetails = lazy(() => import("../pages/NewsDetails.tsx"));
 const SignUp = lazy(() => import("../pages/SignUp"));
 const Sport = lazy(() => import("../pages/Sport"));
 

@@ -1,49 +1,139 @@
-import { nanoid } from "nanoid";
+// // src/store/auth.store.ts
+// import { create } from "zustand";
+//
+// export type Credentials = { email: string; password: string };
+// export type User = { id: string; email: string; name: string };
+//
+// type AuthState = {
+//     currentUser: User | null;
+//     hydrate: () => Promise<void>;
+//     login: (c: Credentials) => Promise<void>;
+//     logout: () => Promise<void>;
+//     setUser: (user: User | null) => void;
+// };
+//
+// async function postJson<T>(url: string, body: unknown): Promise<T> {
+//     const res = await fetch(url, {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         credentials: "include",
+//         body: JSON.stringify(body),
+//     });
+//     const data = await res.json().catch(() => ({}));
+//     if (!res.ok) {
+//         const msg = (data as any)?.message ?? "Request failed";
+//         throw new Error(msg);
+//     }
+//     return data as T;
+// }
+//
+// export const useAuth = create<AuthState>((set) => ({
+//     currentUser: null,
+//
+//     hydrate: async () => {
+//         try {
+//             const res = await fetch("/api/whoami", { credentials: "include" });
+//             if (!res.ok) return set({ currentUser: null });
+//             const data = (await res.json()) as { user: User | null };
+//             set({ currentUser: data.user ?? null });
+//         } catch {
+//             set({ currentUser: null });
+//         }
+//     },
+//
+//     login: async ({ email, password }) => {
+//         const data = await postJson<{ ok: boolean; user: User; expiresAt: string }>(
+//             "/api/login",
+//             { email, password },
+//         );
+//         set({ currentUser: data.user });
+//     },
+//
+//     logout: async () => {
+//         try {
+//             await fetch("/api/logout", { method: "POST", credentials: "include" });
+//         } finally {
+//             set({ currentUser: null });
+//         }
+//     },
+//
+//     setUser: (user) => set({ currentUser: user }), // <-- реалізація
+// }));
+
+// src/store/auth.store.ts
 import { create } from "zustand";
-import type { Credentials, User } from "../types/auth.type";
+
+export type Credentials = { email: string; password: string };
+export type RegisterDto = { name: string; email: string; password: string };
+export type User = { id: string; email: string; name: string };
 
 type AuthState = {
-  currentUser: User | null;
-  users: User[];
-  hydrateFromStorage: () => void;
-  register: (data: Omit<User, "id">) => Promise<void> | void;
-  login: (c: Credentials) => Promise<void> | void;
-  logout: () => void;
+    currentUser: User | null;
+    hydrate: () => Promise<void>;
+    login: (c: Credentials) => Promise<void>;
+    register: (d: RegisterDto) => Promise<void>;        // <-- додано
+    logout: () => Promise<void>;
+    setUser: (user: User | null) => void;
 };
 
-const USERS_KEY = "app.users";
-const SESSION_KEY = "app.session";
-
-export const useAuth = create<AuthState>((set, get) => ({
-  currentUser: null,
-  users: [],
-  hydrateFromStorage: () => {
-    const users = JSON.parse(localStorage.getItem(USERS_KEY) || "[]");
-    const session = JSON.parse(localStorage.getItem(SESSION_KEY) || "null");
-    set({ users, currentUser: session });
-  },
-  register: ({ name, email, password }) => {
-    const { users } = get();
-    if (users.some((u) => u.email === email)) {
-      throw new Error("Email already registered");
+async function postJson<T>(url: string, body: unknown): Promise<T> {
+    const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include", // критично для cookie
+        body: JSON.stringify(body),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) {
+        const msg = (data as any)?.message ?? "Request failed";
+        throw new Error(msg);
     }
-    const newUser: User = { id: nanoid(), name, email, password };
-    const nextUsers = [...users, newUser];
-    localStorage.setItem(USERS_KEY, JSON.stringify(nextUsers));
-    localStorage.setItem(SESSION_KEY, JSON.stringify(newUser));
-    set({ users: nextUsers, currentUser: newUser });
-  },
-  login: ({ email, password }) => {
-    const { users } = get();
-    const user = users.find(
-      (u) => u.email === email && u.password === password,
-    );
-    if (!user) throw new Error("Invalid email or password");
-    localStorage.setItem(SESSION_KEY, JSON.stringify(user));
-    set({ currentUser: user });
-  },
-  logout: () => {
-    localStorage.removeItem(SESSION_KEY);
-    set({ currentUser: null });
-  },
+    return data as T;
+}
+
+export const useAuth = create<AuthState>((set) => ({
+    currentUser: null,
+
+    hydrate: async () => {
+        try {
+            const res = await fetch("/api/whoami", { credentials: "include" });
+            if (!res.ok) return set({ currentUser: null });
+            const data = (await res.json()) as { user: User | null };
+            set({ currentUser: data.user ?? null });
+        } catch {
+            set({ currentUser: null });
+        }
+    },
+
+    login: async ({ email, password }) => {
+        const data = await postJson<{ ok: boolean; user: User; expiresAt: string }>(
+            "/api/login",
+            { email, password }
+        );
+        set({ currentUser: data.user });
+    },
+
+    // 1) реєструємось
+    // 2) одразу логуємось тими самими email+password (бек ставить cookie)
+    register: async ({ name, email, password }) => {
+        await postJson<{ ok: boolean }>(
+            "/api/register",
+            { name, email, password }
+        );
+        const loginResp = await postJson<{ ok: boolean; user: User; expiresAt: string }>(
+            "/api/login",
+            { email, password }
+        );
+        set({ currentUser: loginResp.user });
+    },
+
+    logout: async () => {
+        try {
+            await fetch("/api/logout", { method: "POST", credentials: "include" });
+        } finally {
+            set({ currentUser: null });
+        }
+    },
+
+    setUser: (user) => set({ currentUser: user }),
 }));

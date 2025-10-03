@@ -30,8 +30,8 @@ export default function Header() {
           <NavLink to="/" end className={linkClasses}>
             Home
           </NavLink>
-          <NavLink to="/articles" className={linkClasses}>
-            Articles
+          <NavLink to="/technologies" className={linkClasses}>
+              Technologies
           </NavLink>
           <NavLink to="/sport" className={linkClasses}>
             Sport
@@ -129,3 +129,4 @@ export default function Header() {
     </header>
   );
 }
+

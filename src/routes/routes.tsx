@@ -8,7 +8,7 @@ import PublicOnlyRoute from "./PublicOnlyRoute";
 
 const Layout = lazy(() => import("../components/Layout"));
 const About = lazy(() => import("../pages/About"));
-const Articles = lazy(() => import("../pages/Articles"));
+const Technologies = lazy(() => import("../pages/Technologies"));
 const Home = lazy(() => import("../pages/Home.tsx"));
 const Login = lazy(() => import("../pages/Login.tsx"));
 const NewsDetails = lazy(() => import("../pages/NewsDetails.tsx"));
@@ -21,7 +21,7 @@ const routes: RouteObject[] = [
     element: <Layout />,
     children: [
       { index: true, element: <Home /> },
-      { path: "articles", element: <Articles /> },
+      { path: "technologies", element: <Technologies /> },
       { path: "sport", element: <Sport /> },
       { path: "about", element: <About /> },
       { path: "news/:id", element: <NewsDetails /> },

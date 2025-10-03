@@ -1,0 +1,45 @@
+{
+  "name": "itern-news-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "typecheck": "tsc -b --noEmit",
+    "build": "vite build",
+    "prebuild": "npm run typecheck",
+    "preview": "vite preview",
+    "allint": "npm run lint:fix && npm run lint"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
+    "@tailwindcss/vite": "^4.1.13",
+    "@tanstack/react-query": "^5.89.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-hook-form": "^7.62.0",
+    "react-router-dom": "^7.9.1",
+    "tailwindcss": "^4.1.13",
+    "zod": "^4.1.9",
+    "zustand": "^5.0.8"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.2.4",
+    "@rollup/plugin-virtual": "^3.0.2",
+    "@types/node": "^24.5.2",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "@vitejs/plugin-react": "^5.0.0",
+    "rollup-plugin-visualizer": "^6.0.3",
+    "terser": "^5.44.0",
+    "typescript": "~5.8.3",
+    "vite": "^7.1.2",
+    "vite-plugin-checker": "^0.10.3",
+    "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-inspect": "^11.3.3",
+    "vite-plugin-svgr": "^4.5.0",
+    "vite-tsconfig-paths": "^5.1.4"
+  }
+}

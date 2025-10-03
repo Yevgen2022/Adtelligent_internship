@@ -1,0 +1,89 @@
+/* Tailwind CSS */
+@import "tailwindcss";
+
+/* Basic global styles */
+:root {
+  /* We save important system settings */
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Fixed light color scheme */
+  color-scheme: light;
+}
+
+/* Basic styles for body */
+body {
+  margin: 0;
+  font-family:
+    system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  min-height: 100vh;
+
+  /* Light theme styles */
+  @apply bg-white text-gray-900;
+}
+
+/* Basic styles for headings */
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  @apply font-bold;
+}
+
+h2 {
+  @apply text-2xl font-semibold mb-4;
+}
+
+h3 {
+  @apply text-xl font-medium mb-3;
+}
+
+@layer base {
+  button {
+    @apply inline-flex items-center justify-center
+        rounded-lg border border-transparent
+        px-4 py-2 text-sm font-medium
+        transition-colors duration-200
+        bg-gray-200 text-gray-900
+        hover:bg-gray-300 hover:border-blue-400
+        focus:outline-none focus:ring-4 focus:ring-blue-400;
+  }
+
+  a {
+    @apply font-medium no-underline
+        text-blue-500
+        transition-colors duration-200;
+  }
+}
+
+/* Utility classes for containers */
+.container-app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.container-centered {
+  @apply flex items-center justify-center min-h-screen;
+}
+
+/* Scroll styles */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 rounded;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-500;
+}

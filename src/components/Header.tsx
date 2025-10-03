@@ -52,6 +52,41 @@ export default function Header() {
             </span>
           )}
 
+            {user ? (
+                <NavLink to="/about" className={linkClasses}>
+                    Creative
+                </NavLink>
+            ) : (
+                <span
+                    aria-disabled="true"
+                    title="Only registered user"
+                    className="inline-flex items-center rounded-xl px-3 py-2 text-sm font-medium text-slate-400 opacity-60 cursor-not-allowed"
+                >
+              Creative
+            </span>
+            )}
+
+            {user ? (
+                <NavLink to="/about" className={linkClasses}>
+                    Statistics
+                </NavLink>
+            ) : (
+                // Inactive item with a hint
+                <span
+                    aria-disabled="true"
+                    title="Only registered user"
+                    className="inline-flex items-center rounded-xl px-3 py-2 text-sm font-medium text-slate-400 opacity-60 cursor-not-allowed"
+                >
+              Statistics
+            </span>
+            )}
+
+
+
+
+
+
+
           {/*{user && (*/}
           {/*    <NavLink to="/bookmarks" className={linkClasses}>*/}
           {/*        Bookmarks*/}

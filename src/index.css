@@ -1,5 +1,7 @@
 /* Tailwind CSS */
 @import "tailwindcss";
+@import "./styles/creative.css";
+
 
 /* Basic global styles */
 :root {
@@ -50,7 +52,7 @@ h3 {
         transition-colors duration-200
         bg-gray-200 text-gray-900
         hover:bg-gray-300 hover:border-blue-400
-        focus:outline-none focus:ring-4 focus:ring-blue-400;
+        focus:outline-none focus:ring-1 focus:ring-blue-400;
   }
 
   a {
@@ -58,6 +60,7 @@ h3 {
         text-blue-500
         transition-colors duration-200;
   }
+
 }
 
 /* Utility classes for containers */

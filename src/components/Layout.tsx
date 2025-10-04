@@ -8,7 +8,7 @@ export default function Layout() {
     <>
       {/*<ScrollToTop />*/}
       <Header />
-      <main className="flex-grow mx-auto px-6 pt-56 border">
+      <main className="flex-grow mx-auto px-6 py-14 ">
         <Outlet />
       </main>
       <Footer />

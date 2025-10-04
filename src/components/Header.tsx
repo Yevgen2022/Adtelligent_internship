@@ -30,12 +30,16 @@ export default function Header() {
           <NavLink to="/" end className={linkClasses}>
             Home
           </NavLink>
-          <NavLink to="/technologies" className={linkClasses}>
-              Technologies
-          </NavLink>
-          <NavLink to="/sport" className={linkClasses}>
-            Sport
-          </NavLink>
+
+
+          {/*<NavLink to="/technologies" className={linkClasses}>*/}
+          {/*    Technologies*/}
+          {/*</NavLink>*/}
+          {/*<NavLink to="/sport" className={linkClasses}>*/}
+          {/*  Sport*/}
+          {/*</NavLink>*/}
+
+
 
           {user ? (
             <NavLink to="/about" className={linkClasses}>
@@ -53,7 +57,7 @@ export default function Header() {
           )}
 
             {user ? (
-                <NavLink to="/about" className={linkClasses}>
+                <NavLink to="/creative" className={linkClasses}>
                     Creative
                 </NavLink>
             ) : (
@@ -67,7 +71,7 @@ export default function Header() {
             )}
 
             {user ? (
-                <NavLink to="/about" className={linkClasses}>
+                <NavLink to="/statistics" className={linkClasses}>
                     Statistics
                 </NavLink>
             ) : (
@@ -83,15 +87,12 @@ export default function Header() {
 
 
 
-
-
-
-
           {/*{user && (*/}
           {/*    <NavLink to="/bookmarks" className={linkClasses}>*/}
           {/*        Bookmarks*/}
           {/*    </NavLink>*/}
           {/*)}*/}
+
         </nav>
 
         <div className="flex items-center gap-2">

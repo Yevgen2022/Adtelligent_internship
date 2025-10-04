@@ -1,0 +1,35 @@
+/* src/styles/creative.css */
+/*@tailwind base;*/
+/*@tailwind components;*/
+/*@tailwind utilities;*/
+
+@import "tailwindcss";
+
+@layer components {
+    .li-form       { @apply max-w-3xl mx-auto font-sans bg-gray-100; }
+    .li-fieldset   { @apply border rounded-2xl p-6 mb-6; }
+    .li-legend     { @apply font-semibold px-1; }
+
+    .li-label      { @apply block mt-2 mb-1 text-sm; }
+    .li-input      { @apply w-full border rounded-lg px-3 py-2 bg-white; }
+    .li-input[type="file"]{
+        @apply cursor-pointer hover:border-black hover:bg-neutral-50 transition-colors;
+    }
+    .li-select     { @apply w-full border rounded-lg px-3 py-2 bg-white; }
+
+    .li-row        { @apply grid gap-3 md:grid-cols-2 mt-2; }
+    .li-hint       { @apply text-neutral-500 text-sm mt-1; }
+
+    .li-inline     { @apply flex items-center gap-2 mt-2; }
+    .li-checkbox   { @apply align-middle; }
+
+    .li-actions    { @apply mt-6 flex gap-3 mb-6; }
+    .li-btn        { @apply rounded-xl px-4 py-2 bg-gray-300 text-black hover:bg-gray-400 active:bg-gray-300; }
+    .li-btn--secondary { @apply bg-neutral-300 text-black hover:bg-neutral-400 active:bg-neutral-300 ; }
+
+    /* Стани/доступність (опційно, але корисно) */
+    /*.li-input:focus,*/
+    /*.li-select:focus { @apply outline-none ring-1 ring-black/50; }*/
+    /*.li-input:invalid*/
+    /*.li-select:invalid { @apply ring-2 ring-red-400; }*/
+}

@@ -13,7 +13,7 @@ export default function CardNew({ meta, item }: Props) {
     const encodedId = linkToId(item.link);
 
     return (
-        <article className="rounded-2xl border p-4 shadow-sm hover:shadow-md transition-shadow bg-white">
+        <article className="rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow bg-gray-100">
             {/* block of source of (meta) */}
             <header className="mb-3 flex items-start gap-3">
                 {meta.image ? (

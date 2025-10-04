@@ -14,3 +14,11 @@ export type FeedMeta = {
     description?: string | null;
     image?: string | null;
 };
+
+export type Article = {
+    title: string;
+    content: string;   // HTML текст
+    author?: string;
+    published?: string;
+    sourceUrl?: string;
+};

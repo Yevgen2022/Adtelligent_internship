@@ -31,15 +31,12 @@ export default function Header() {
             Home
           </NavLink>
 
-
           {/*<NavLink to="/technologies" className={linkClasses}>*/}
           {/*    Technologies*/}
           {/*</NavLink>*/}
           {/*<NavLink to="/sport" className={linkClasses}>*/}
           {/*  Sport*/}
           {/*</NavLink>*/}
-
-
 
           {user ? (
             <NavLink to="/about" className={linkClasses}>
@@ -56,43 +53,40 @@ export default function Header() {
             </span>
           )}
 
-            {user ? (
-                <NavLink to="/creative" className={linkClasses}>
-                    Creative
-                </NavLink>
-            ) : (
-                <span
-                    aria-disabled="true"
-                    title="Only registered user"
-                    className="inline-flex items-center rounded-xl px-3 py-2 text-sm font-medium text-slate-400 opacity-60 cursor-not-allowed"
-                >
+          {user ? (
+            <NavLink to="/creative" className={linkClasses}>
+              Creative
+            </NavLink>
+          ) : (
+            <span
+              aria-disabled="true"
+              title="Only registered user"
+              className="inline-flex items-center rounded-xl px-3 py-2 text-sm font-medium text-slate-400 opacity-60 cursor-not-allowed"
+            >
               Creative
             </span>
-            )}
+          )}
 
-            {user ? (
-                <NavLink to="/analytics" className={linkClasses}>
-                    Analytics
-                </NavLink>
-            ) : (
-                // Inactive item with a hint
-                <span
-                    aria-disabled="true"
-                    title="Only registered user"
-                    className="inline-flex items-center rounded-xl px-3 py-2 text-sm font-medium text-slate-400 opacity-60 cursor-not-allowed"
-                >
-               Analytics
+          {user ? (
+            <NavLink to="/analytics" className={linkClasses}>
+              Analytics
+            </NavLink>
+          ) : (
+            // Inactive item with a hint
+            <span
+              aria-disabled="true"
+              title="Only registered user"
+              className="inline-flex items-center rounded-xl px-3 py-2 text-sm font-medium text-slate-400 opacity-60 cursor-not-allowed"
+            >
+              Analytics
             </span>
-            )}
-
-
+          )}
 
           {/*{user && (*/}
           {/*    <NavLink to="/bookmarks" className={linkClasses}>*/}
           {/*        Bookmarks*/}
           {/*    </NavLink>*/}
           {/*)}*/}
-
         </nav>
 
         <div className="flex items-center gap-2">
@@ -130,4 +124,3 @@ export default function Header() {
     </header>
   );
 }
-

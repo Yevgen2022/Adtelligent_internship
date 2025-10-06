@@ -14,9 +14,8 @@ const Login = lazy(() => import("../pages/Login.tsx"));
 const NewsDetails = lazy(() => import("../pages/NewsDetails.tsx"));
 const SignUp = lazy(() => import("../pages/SignUp"));
 const Sport = lazy(() => import("../pages/Sport"));
-const Analytics = lazy(() => import ("../pages/Analytics/AnalyticsPage.tsx"));
+const Analytics = lazy(() => import("../pages/Analytics/AnalyticsPage.tsx"));
 const Creative = lazy(() => import("../pages/Creative"));
-
 
 const routes: RouteObject[] = [
   {
@@ -32,7 +31,6 @@ const routes: RouteObject[] = [
       { path: "signup", element: <SignUp /> },
       { path: "analytics", element: <Analytics /> },
       { path: "creative", element: <Creative /> },
-
 
       //middlware
       // {

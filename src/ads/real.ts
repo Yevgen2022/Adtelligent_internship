@@ -43,6 +43,7 @@ function waitForPbjs(max = 5000): Promise<void> {
 }
 
 type PbjsApi = NonNullable<typeof window.pbjs> & {
+  // que?: PbjsCommand[];
   requestBids: (opts: {
     adUnits?: unknown[];
     adUnitCodes?: string[];

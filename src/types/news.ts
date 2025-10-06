@@ -7,18 +7,17 @@ export type NewsItem = {
   isoDate?: string;
 };
 
-
 export type FeedMeta = {
-    title: string;
-    link: string;
-    description?: string | null;
-    image?: string | null;
+  title: string;
+  link: string;
+  description?: string | null;
+  image?: string | null;
 };
 
 export type Article = {
-    title: string;
-    content: string;   // HTML текст
-    author?: string;
-    published?: string;
-    sourceUrl?: string;
+  title: string;
+  content: string; // HTML текст
+  author?: string;
+  published?: string;
+  sourceUrl?: string;
 };

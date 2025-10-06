@@ -2,7 +2,6 @@
 @import "tailwindcss";
 @import "./styles/creative.css";
 
-
 /* Basic global styles */
 :root {
   /* We save important system settings */
@@ -60,7 +59,6 @@ h3 {
         text-blue-500
         transition-colors duration-200;
   }
-
 }
 
 /* Utility classes for containers */

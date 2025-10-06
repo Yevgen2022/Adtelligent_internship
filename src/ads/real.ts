@@ -55,6 +55,13 @@ type PbjsApi = NonNullable<typeof window.pbjs> & {
   ) => Array<{ adId: string; width?: number; height?: number }>;
   renderAd: (doc: Document | undefined, adId: string) => void;
   setConfig?: (cfg: unknown) => void;
+
+  ////////////
+  setBidderConfig?: (cfg: {
+    bidders: string[];
+    config: { bidCpmAdjustment?: (cpm: number) => number };
+  }) => void;
+  ///////////
 };
 
 const client: AdsClient = {
@@ -76,6 +83,7 @@ const client: AdsClient = {
     bids,
     timeout = 1000,
     iframe,
+    boosts, //+
   }: RenderBannerInput) {
     await this.init();
     const pbjs = window.pbjs as PbjsApi;
@@ -83,6 +91,18 @@ const client: AdsClient = {
 
     return new Promise<void>((resolve) => {
       pbjs.que.push(() => {
+        /////
+        if (boosts) {
+          Object.entries(boosts).forEach(([bidder, mult]) => {
+            const factor = Number(mult) || 1;
+            pbjs.setBidderConfig?.({
+              bidders: [bidder],
+              config: { bidCpmAdjustment: (cpm: number) => cpm * factor },
+            });
+          });
+        }
+        //////
+
         const adUnit = { code, mediaTypes: { banner: { sizes } }, bids };
 
         const render = () => {

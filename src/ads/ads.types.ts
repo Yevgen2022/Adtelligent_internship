@@ -13,9 +13,11 @@ export type RenderBannerInput = {
   bids: Bid[];
   timeout: number;
   iframe: HTMLIFrameElement;
+  boosts?: Record<string, number>; // { bidder: multiplier }//+
 };
 
 export interface AdsClient {
   init: () => Promise<void>;
-  renderBanner: (args: RenderBannerInput) => Promise<void>;
+  // renderBanner: (args: RenderBannerInput) => Promise<void>;
+  renderBanner: (args: RenderBannerInput) => Promise<void>; //+
 }

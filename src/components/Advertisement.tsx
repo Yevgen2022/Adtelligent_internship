@@ -9,6 +9,7 @@ export type AdvertisementProps = {
   timeout?: number;
   className?: string;
   debug?: boolean;
+  boosts?: Record<string, number>; //level money +
 };
 
 function isMatrix(s: Size[] | Size[][]): s is Size[][] {
@@ -22,6 +23,7 @@ export default function Advertisement({
   bids,
   timeout = 1000,
   className,
+  boosts, //+
 }: AdvertisementProps) {
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const client = ads as AdsClient;
@@ -42,9 +44,10 @@ export default function Advertisement({
       bids,
       timeout,
       iframe: iframeRef.current,
+      boosts, //+
     });
-  }, [client, code, flatSizes, bids, timeout]);
-
+    // }, [client, code, flatSizes, bids, timeout]);
+  }, [client, code, flatSizes, bids, timeout, boosts]); //+
   return (
     <iframe
       id={code}

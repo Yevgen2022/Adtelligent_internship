@@ -90,6 +90,7 @@ export default function Home() {
                 sizes={[[300, 600]]}
                 bids={[{ bidder: "bidmatic", params: { source: 886409 } }]}
                 timeout={2000}
+                // boosts={{ bidmatic: 1.7 }}
                 debug
                 className="mx-auto"
               />

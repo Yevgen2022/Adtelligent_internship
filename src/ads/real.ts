@@ -1,5 +1,8 @@
 import type { AdsClient, RenderBannerInput } from "./ads.types";
 
+console.info('[ads] client mode: REAL');
+
+
 let prebidLoaded = false;
 
 const PREBID_SRC =

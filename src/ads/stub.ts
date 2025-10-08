@@ -1,4 +1,10 @@
+
+
+
+
 import type { AdsClient, RenderBannerInput } from "./ads.types";
+
+console.info('[ads] client mode: STUB');
 
 const client: AdsClient = {
   async init() {

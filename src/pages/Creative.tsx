@@ -67,6 +67,14 @@ export default function Creative() {
     ) as HTMLFormElement | null;
     if (!form) return;
 
+//Check mistake
+      if (form && BACKEND_ORIGIN) {
+          form.action = new URL(form.action, BACKEND_ORIGIN).toString();
+      }
+
+
+
+
     const onSubmit = async (e: Event) => {
       e.preventDefault();
       const fd = new FormData(form);

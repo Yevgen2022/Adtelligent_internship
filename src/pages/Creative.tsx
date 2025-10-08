@@ -70,13 +70,26 @@ export default function Creative() {
 
 
 
-//Check mistake
+/////////////////////////Check mistake
       if (BACKEND_ORIGIN) {
-          const fixed = new URL(form.action, BACKEND_ORIGIN).toString();
-          if (fixed !== form.action) form.action = fixed;
-          console.log("[form action fixed]:", form.action); // тимчасово для перевірки
-      }
 
+          const raw = form.getAttribute("action") || "";
+
+
+          if (!/^https?:\/\//i.test(raw)) {
+
+              const fixed = new URL(raw.replace(/^\/?/, "/"), BACKEND_ORIGIN).toString();
+              form.setAttribute("action", fixed);
+          }
+
+
+          if (!form.getAttribute("method")) form.setAttribute("method", "POST");
+
+          console.log("[form action fixed]:", form.getAttribute("action"));
+      } else {
+          console.warn("VITE_BACKEND_ORIGIN is not set");
+      }
+/////////////////////////////////////
 
 
 

@@ -3,11 +3,15 @@ import parse from "html-react-parser";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { API_BASE } from "../config";
 
-const FORM_PATH = `${API_BASE}/api/adserver/lineitem/form`;
-const BACKEND_ORIGIN = import.meta.env.VITE_BACKEND_ORIGIN as
-  | string
-  | undefined;
-const FORM_URL = BACKEND_ORIGIN ? `${BACKEND_ORIGIN}${FORM_PATH}` : FORM_PATH;
+// const FORM_PATH = `${API_BASE}/api/adserver/lineitem/form`;
+// const BACKEND_ORIGIN = import.meta.env.VITE_BACKEND_ORIGIN as
+//   | string
+//   | undefined;
+// const FORM_URL = BACKEND_ORIGIN ? `${BACKEND_ORIGIN}${FORM_PATH}` : FORM_PATH;
+
+
+const FORM_URL = `${API_BASE}/api/adserver/lineitem/form`;
+
 
 export default function Creative() {
   const [html, setHtml] = useState<string>("");
@@ -33,7 +37,7 @@ export default function Creative() {
       try {
         setStatus("loading");
         const res = await fetch(FORM_URL, {
-          credentials: BACKEND_ORIGIN ? "include" : "same-origin",
+          credentials: "include",
           headers: { Accept: "text/html" },
         });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -71,23 +75,17 @@ export default function Creative() {
 
 
 /////////////////////////Check mistake
-      if (BACKEND_ORIGIN) {
-
+      {
           const raw = form.getAttribute("action") || "";
-
-
           if (!/^https?:\/\//i.test(raw)) {
-
-              const fixed = new URL(raw.replace(/^\/?/, "/"), BACKEND_ORIGIN).toString();
+              const fixed = new URL(raw.replace(/^\/?/, "/"), API_BASE).toString();
               form.setAttribute("action", fixed);
           }
 
-
+          // Якщо не вказаний метод — ставимо POST
           if (!form.getAttribute("method")) form.setAttribute("method", "POST");
 
           console.log("[form action fixed]:", form.getAttribute("action"));
-      } else {
-          console.warn("VITE_BACKEND_ORIGIN is not set");
       }
 /////////////////////////////////////
 
@@ -101,7 +99,7 @@ export default function Creative() {
         const res = await fetch(form.action, {
           method: form.method,
           body: fd,
-          credentials: BACKEND_ORIGIN ? "include" : "same-origin",
+          credentials: "include",
         });
 
         if (!res.ok) {

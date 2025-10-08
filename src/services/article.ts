@@ -1,3 +1,7 @@
+import { API_BASE } from "../config";
+
+
+
 type Article = {
   title: string;
   content?: string;
@@ -16,7 +20,7 @@ export const articleService = {
   // @returns A Promise with the article data
 
   async fetchArticle(sourceUrl: string, link: string): Promise<Article> {
-    const res = await fetch("/api/parse", {
+    const res = await fetch(`${API_BASE}/api/parse`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ url: sourceUrl, link }),

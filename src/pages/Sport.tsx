@@ -62,6 +62,41 @@ export default function Sport() {
               className="border rounded shadow-sm"
             />
           </div>
+
+
+
+            {/*////////////////  Блок моєї реклами  //////////////////////////*/}
+
+
+            {/*<aside className="hidden lg:block sticky top-6 self-start">*/}
+            {/*    <div className="mb-3 text-neutral-700 dark:text-neutral-300 font-medium">*/}
+            {/*        Ad (Oshkukov)*/}
+            {/*    </div>*/}
+            {/*    <div className="rounded-2xl border border-neutral-200/60 bg-white shadow-sm dark:bg-neutral-800 dark:border-neutral-700">*/}
+            {/*        <Advertisement*/}
+            {/*            code="home-right-oshkukov"*/}
+            {/*            sizes={[[300, 250]]}*/}
+            {/*            bids={[*/}
+            {/*                {*/}
+            {/*                    bidder: "oshkukov",*/}
+            {/*                    params: {*/}
+            {/*                        endpoint: "http://localhost:3500/api/adserver/bid", // локальний бек*/}
+            {/*                        publisherId: "demo-pub",*/}
+            {/*                        placementId: "slot-1",*/}
+            {/*                        bidfloor: 0.1*/}
+            {/*                    }*/}
+            {/*                }*/}
+            {/*            ]}*/}
+            {/*            timeout={1500}*/}
+            {/*            className="mx-auto"*/}
+            {/*        />*/}
+            {/*    </div>*/}
+            {/*</aside>*/}
+
+
+{/*/////////////////////////////////////////////*/}
+
+
         </div>
       </section>
     </section>

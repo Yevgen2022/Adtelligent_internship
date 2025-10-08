@@ -34,9 +34,9 @@ export default function Header() {
           {/*<NavLink to="/technologies" className={linkClasses}>*/}
           {/*    Technologies*/}
           {/*</NavLink>*/}
-          {/*<NavLink to="/sport" className={linkClasses}>*/}
-          {/*  Sport*/}
-          {/*</NavLink>*/}
+          <NavLink to="/sport" className={linkClasses}>
+            Sport
+          </NavLink>
 
           {user ? (
             <NavLink to="/about" className={linkClasses}>

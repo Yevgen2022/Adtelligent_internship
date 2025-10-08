@@ -6,6 +6,7 @@ import Advertisement from "../components/Advertisement";
 import { articleService } from "../services/article";
 import { idToLink } from "../utils/LinkID";
 
+
 type Article = {
   title: string;
   content?: string;

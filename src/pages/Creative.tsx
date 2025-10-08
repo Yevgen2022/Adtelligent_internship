@@ -67,9 +67,14 @@ export default function Creative() {
     ) as HTMLFormElement | null;
     if (!form) return;
 
+
+
+
 //Check mistake
-      if (form && BACKEND_ORIGIN) {
-          form.action = new URL(form.action, BACKEND_ORIGIN).toString();
+      if (BACKEND_ORIGIN) {
+          const fixed = new URL(form.action, BACKEND_ORIGIN).toString();
+          if (fixed !== form.action) form.action = fixed;
+          console.log("[form action fixed]:", form.action); // тимчасово для перевірки
       }
 
 

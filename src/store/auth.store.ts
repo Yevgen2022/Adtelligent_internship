@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { API_BASE } from "../config";
 
 export type Credentials = { email: string; password: string };
 export type RegisterDto = { name: string; email: string; password: string };
@@ -40,7 +41,7 @@ export const useAuth = create<AuthState>((set) => ({
 
   hydrate: async () => {
     try {
-      const res = await fetch("/api/whoami", { credentials: "include" });
+      const res = await fetch(`${API_BASE}/api/whoami`, { credentials: "include" });
       if (!res.ok) return set({ currentUser: null });
       const data = (await res.json()) as { user: User | null };
       set({ currentUser: data.user ?? null });
@@ -51,7 +52,7 @@ export const useAuth = create<AuthState>((set) => ({
 
   login: async ({ email, password }) => {
     const data = await postJson<{ ok: boolean; user: User; expiresAt: string }>(
-      "/api/login",
+      `${API_BASE}/api/login`,
       { email, password },
     );
     set({ currentUser: data.user });
@@ -60,18 +61,18 @@ export const useAuth = create<AuthState>((set) => ({
   // 1) registration
   // 2) immediately log in with the same email+password (backend sets a cookie)
   register: async ({ name, email, password }) => {
-    await postJson<{ ok: boolean }>("/api/register", { name, email, password });
+    await postJson<{ ok: boolean }>(`${API_BASE}/api/register`, { name, email, password });
     const loginResp = await postJson<{
       ok: boolean;
       user: User;
       expiresAt: string;
-    }>("/api/login", { email, password });
+    }>(`${API_BASE}/api/login`, { email, password });
     set({ currentUser: loginResp.user });
   },
 
   logout: async () => {
     try {
-      await fetch("/api/logout", { method: "POST", credentials: "include" });
+      await fetch(`${API_BASE}/api/logout`, { method: "POST", credentials: "include" });
     } finally {
       set({ currentUser: null });
     }

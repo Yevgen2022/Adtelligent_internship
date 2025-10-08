@@ -44,7 +44,7 @@ export default function Advertisement({
       bids,
       timeout,
       iframe: iframeRef.current,
-      boosts, //+
+      // boosts, //+
     });
     // }, [client, code, flatSizes, bids, timeout]);
   }, [client, code, flatSizes, bids, timeout, boosts]); //+
